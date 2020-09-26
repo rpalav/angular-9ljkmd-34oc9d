@@ -1,0 +1,20 @@
+<mat-form-field>
+
+	<input #input="ngModel" [ngModel]="value" (ngModelChange)="value=$event;onChange($event)"
+    matInput
+    [errorStateMatcher]="errorMatcher()"
+    [placeholder]="placeholder"
+    [type]="hide ? 'password' : 'text'"
+    (blur)="onTouched()"
+    >
+	<button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </button>
+	<mat-error *ngIf="control?.errors?.required">
+		Please enter a {{placeholder}}
+	</mat-error>
+	<mat-error *ngIf="errors?.errorMatch">
+		Must match
+	</mat-error>
+
+</mat-form-field>

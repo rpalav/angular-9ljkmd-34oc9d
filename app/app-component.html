@@ -1,0 +1,9 @@
+<form [formGroup]="myForm" autocomplete="off">
+	<app-custom-input placeholder="Password" formControlName="password" >
+	</app-custom-input>
+	<app-custom-input placeholder="Repeat password" formControlName="repeatpassword" [errors]="myForm.errors?.errorMatch?myForm.errors:null" >
+	</app-custom-input>
+</form>
+<pre>
+{{myForm?.value|json}}
+</pre>
